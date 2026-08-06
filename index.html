@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corio Shell - Main File</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <link rel="icon" href="icons/corio.ico">
+</head>
+<body>
+    <img src="wallpapers/1.jpg" alt="wallpapers" id="background-img">
+    <span id="down-panel-span">
+        <button id="start-btn" class="circle-button">
+            <img src="icons/start.ico" alt="S">
+        </button>
+    </span>
+    <span id="start-panel-span">
+        <span id="user-data">
+            <img src="icons/corio.ico" alt="Co">
+            <span id="username">CorIO User</span>
+        </span>
+        <span id="app-list">
+        </span>
+        <span id="power-btns">
+                <button id="power-btn" class="circle-button" onclick="sendCommand('poweroff')">
+                    <img src="icons/power.ico" alt="power">
+                </button>
+                <button id="suspend-btn" class="circle-button" onclick="sendCommand('suspend')">
+                    <img src="icons/suspend.ico" alt="suspend">
+                </button>
+                <button id="reboot-btn" class="circle-button" onclick="sendCommand('reboot')">
+                    <img src="icons/reboot.ico" alt="reboot">
+                </button>
+        </span>
+    </span>
+</body>
+</html>
