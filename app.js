@@ -8,5 +8,10 @@ function setStartPanel() {
 startBtn.addEventListener('click', setStartPanel);
 
 async function sendCommand(cmd) {
-	await fetch(`http://127.0.0.1:2345/${cmd}`);
+	try {
+		await fetch(`http://127.0.0.1:2345/${cmd}`);
+	} catch	(error) {
+		console.log(`ERROR: ${error}`)
+	}
 }
+

@@ -97,6 +97,21 @@ body, html {
     height: calc(400px - 56px - 54px);
     display: block;
     overflow: visible;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#app-list button {
+    margin: 3px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+#app-list button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25pz;
 }
 
 #power-btns {
@@ -105,4 +120,67 @@ body, html {
     gap: 3px;
     bottom: 0px;
     left: 3px;
+}
+
+
+#desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+  z-index: 0;
+}
+
+.window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.window-header {
+  padding: 8px 12px;
+  background: #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  user-select: none;
+  color: #fff;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 16px;
+}
+.close-btn:hover { color: #ff5f56; }
+
+.window-content {
+  flex-grow: 1;
+  position: relative;
+}
+
+.window-iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.resizer {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
 }

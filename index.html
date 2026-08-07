@@ -6,10 +6,13 @@
     <title>Corio Shell - Main File</title>
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    <script src="win-manager.js" defer></script>
     <link rel="icon" href="icons/corio.ico">
 </head>
 <body>
-    <img src="wallpapers/1.jpg" alt="wallpapers" id="background-img">
+    <div id="desktop"></div>
+
+    <img src="wallpapers/1.jpg" alt="wallpapers" id="background-img" draggable="false">
     <span id="down-panel-span">
         <button id="start-btn" class="circle-button">
             <img src="icons/start.ico" alt="S">
@@ -34,5 +37,19 @@
                 </button>
         </span>
     </span>
+
+<template id="window-template">
+  <div class="window" style="left: 100px; top: 100px; width: 400px; height: 300px;">
+    <div class="window-header">
+      <span class="window-title">Приложение</span>
+      <button class="close-btn">×</button>
+    </div>
+    <div class="window-content">
+      <iframe src="" frameborder="0" class="window-iframe"></iframe>
+    </div>
+    <div class="resizer"></div>
+  </div>
+</template>
+
 </body>
 </html>
