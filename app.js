@@ -18,3 +18,13 @@ async function sendCommand(cmd) {
 	}
 }
 
+async function sendSystemExec(exec) {
+	try {
+		let securedCmd = encodeURIComponent(exec);
+
+		let result = await fetch(`http://127.0.0.1:2345/exec/${securedCmd}`);
+		return result;
+	} catch (error) {
+		console.log('Any error in sendSystemExec function')
+	}
+}
