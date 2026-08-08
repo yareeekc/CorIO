@@ -17,6 +17,7 @@
         <button id="start-btn" class="circle-button">
             <img src="icons/start.ico" alt="S">
         </button>
+        <span id="working-apps-list"></span>
     </span>
     <span id="start-panel-span">
         <span id="user-data">
@@ -41,11 +42,14 @@
 <template id="window-template">
   <div class="window" style="left: 100px; top: 100px; width: 400px; height: 300px;">
     <div class="window-header">
-      <span class="window-title">Приложение</span>
-      <button class="close-btn">×</button>
+        <span class="window-title">Приложение</span>
+        <div class="header-controls">
+            <button class="maximize-btn">🗖</button>
+            <button class="close-btn">X</button>
+        </div>
     </div>
     <div class="window-content">
-      <iframe src="" frameborder="0" class="window-iframe"></iframe>
+        <iframe src="" frameborder="0" class="window-iframe"></iframe>
     </div>
     <div class="resizer"></div>
   </div>
