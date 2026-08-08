@@ -1,12 +1,13 @@
 let topZIndex = 10;
 
-function createWindow(title, appUrl) {
+function createWindow(title, appUrl, appLogo) {
   	const template = document.getElementById('window-template');
   	const clone = template.content.cloneNode(true);
   
   	const win = clone.querySelector('.window');
   	const header = win.querySelector('.window-header');
   	const resizer = win.querySelector('.resizer');
+	const maxBtn = win.querySelector('.maximize-btn');
 	const closeBtn = win.querySelector('.close-btn');
 	const iframe = win.querySelector('.window-iframe');
   
@@ -16,13 +17,42 @@ function createWindow(title, appUrl) {
   	topZIndex++;
   	win.style.zIndex = topZIndex;
 
+	function focusWindow(win) {
+		topZIndex++;
+		win.style.zIndex = topZIndex;
+	}
 
-  	win.addEventListener('mousedown', () => {
-    	topZIndex++;
-    	win.style.zIndex = topZIndex;
-  	});
+  	win.addEventListener('mousedown', () => {focusWindow(win)});
+
+	let isMaximized = false;
+	let oldCoords = {};
+
+	maxBtn.addEventListener('click', () => {
+		if (!isMaximized) {
+			oldCoords = {
+				left: win.style.left,
+				top: win.style.top,
+				width: win.style.width,
+				height: win.style.height,
+			}
+
+			win.classList.add('maximized');
+			isMaximized = true;
+		} else {
+			win.classList.remove('maximized');
+
+			win.style.left = oldCoords.left;
+			win.style.top = oldCoords.top;
+			win.style.width = oldCoords.width;
+			win.style.height = oldCoords.height;
+
+			isMaximized = false;
+		}
+	});
 
 	header.addEventListener('mousedown', (e) => {
+		if (isMaximized) {return;}
+
     	e.preventDefault();
     	let shiftX = e.clientX - win.getBoundingClientRect().left;
     	let shiftY = e.clientY - win.getBoundingClientRect().top;
@@ -66,9 +96,23 @@ function createWindow(title, appUrl) {
     	}, { once: true });
   	});
 
+	document.getElementById('desktop').appendChild(win);
+
+	const taskbarApps = document.getElementById('working-apps-list');
+	const taskItem = document.createElement('button');
+	taskItem.className = 'circle-button';
+	const taskLogo = document.createElement('img');
+	taskLogo.src = appLogo;
+	taskLogo.alt = title;
+	taskItem.appendChild(taskLogo);
+	taskbarApps.appendChild(taskItem);
+
+	taskItem.addEventListener('click', () => {focusWindow(win)});topZIndex++;
+    	win.style.zIndex = topZIndex;
+
   	closeBtn.addEventListener('click', () => {
   	  	win.remove();
+		taskItem.remove();
   	});
 
-  	document.getElementById('desktop').appendChild(win);
 }
