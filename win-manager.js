@@ -92,7 +92,7 @@ function createWindow(title, appUrl, appLogo) {
 
     	document.addEventListener('mouseup', () => {
       		document.removeEventListener('mousemove', onMouseMove);
-      		iframe.style.pointerEvents = 'auto'; // Возвращаем клики в iframe
+      		iframe.style.pointerEvents = 'auto';
     	}, { once: true });
   	});
 
