@@ -1,32 +1,32 @@
 #!/bin/bash
-echo 'Server Starting on 2345 Port'
 
-while true; do
-    nc -l -k 2345 > /tmp/request.txt
+if [ "$1" == "--run-request" ]; then
+    read -r REQUEST_LINE
+    echo -e "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nContent-Type: text/plain; charset=utf-8\r\nConnection: close\r\n\r"
 
-    {
-        if grep -q 'suspend' /tmp/request.txt; then
-            systemctl suspend
-        elif grep -q 'poweroff' /tmp/request.txt; then
-            systemctl poweroff
-        elif grep -q 'poweroff' /tmp/request.txt; then
-            systemctl reboot
-        elif grep -q 'ls' /tmp/request.txt; then
-            ls
-        elif grep -q 'exec' /tmp/request.txt; then
-            RAW_CMD=$(grep 'exec' /tmp/request.txt | sed -E 's|.*GET /exec/([^ ]*) .*|\1|')
+    if echo "$REQUEST_LINE" | grep -q 'poweroff'; then
+        systemctl poweroff
+    elif echo "$REQUEST_LINE" | grep -q 'reboot'; then
+        systemctl reboot
+    elif echo "$REQUEST_LINE" | grep -q 'suspend'; then
+        systemctl suspend
+    elif echo "$REQUEST_LINE" | grep -q 'ping'; then
+        echo "OK"
+    elif echo "$REQUEST_LINE" | grep -q 'exec'; then
+        RAW_CMD=$(echo "$REQUEST_LINE" | sed -E 's|.*GET /exec/([^ ]*) .*|\1|')
+        DECODED_CMD=$(echo "$RAW_CMD" | sed 's/%/\\x/g' | xargs -0 printf "%b")
 
-            DECODED_CMD=$(echo "$RAW_CMD" | awk '{
-                gsub(/%20/, " "); gsub(/%2F/, "/"); gsub(/%3A/, ":");
-                gsub(/%2D/, "-"); gsub(/%3E/, ">"); gsub(/%3C/, "<");
-                print
-            }')
-
-            if [ -n "$DECODED_CMD" ]; then
-                eval "$DECODED_CMD"
-            else
-                echo 'usage: "exec <COMMAND>"'
-            fi
+        if [ -n "$DECODED_CMD" ]; then
+            eval "$DECODED_CMD" 2>&1
+        else
+            echo "using: fetch('http://127.0.0.1:2345/exec/', command);"
         fi
-    } | nc -l -k 2345 > /dev/null
-done
+    else
+        echo "uncnown command"
+    fi
+    exit 0
+fi
+
+echo 'Corio OS Kernel HTTP Server Started on Port 2345'
+
+ncat -l -k 2345 -c "$0 --run-request"

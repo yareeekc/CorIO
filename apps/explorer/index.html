@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corio Shell - Explorer App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <link rel="icon" href="icons/logo.ico">
+</head>
+<body>
+    <div id="explorer-win">
+        <div class="nav-bar">
+            <button class="back-btn" id="back-btn">↑</button>
+            <span id="pwd">...</span>
+        </div>
+
+        <div id="file-list"></div>
+    </div>
+    <div id="editor-win">
+        <div class="nav-bar">
+            <button class="back-btn" id="close-editor">←</button>
+            <button class="back-btn" id="save-btn">🖫</button>
+            <span id="filename">...</span>
+        </div>
+
+        <textarea id="text" placeholder="Hello World!"></textarea>
+    </div>
+    <div id="videoplayer-win">
+        <div class="nav-bar">
+            <button class="back-btn" id="close-videoplayer">←</button>
+            <span id="videofilename">...</span>
+        </div>
+
+        <video controls id="video"></video>
+    </div>
+    <div id="picture-preview-win">
+        <div class="nav-bar">
+            <button class="back-btn" id="close-picture">←</button>
+            <span id="picturefilename">...</span>
+        </div>
+
+        <div id="img-parent">
+            <img src="" alt="" id="picture-file">
+        </div>
+    </div>
+
+    <div class="context-menu" id="custom-contex-menu">
+        <div class="menu-item" id="menu-mkdir"><span>New Dir</span></div>
+        <div class="menu-item" id="menu-mkfile"><span>New File</span></div>
+        <div class="menu-item" id="menu-rename"><span>Rename</span></div>
+        <div class="menu-item delete" id="menu-delete"><span>Delete</span></div>
+    </div>
+    <div class="context-menu" id="document-context-menu">
+        <div class="menu-item" id="document-menu-mkdir"><span>New Dir</span></div>
+        <div class="menu-item" id="document-menu-mkfile"><span>New File</span></div>
+    </div>
+    <div class="rename-menu" id="rename-menu">
+        <textarea id="new-name"></textarea>
+        <div id="button-parent">
+            <button id="cancel-rename" class="rename-button">Cancel</button>
+            <button id="confirm-rename" class="rename-button">Confirm</button>
+        </div>
+    </div>
+</body>
+</html>

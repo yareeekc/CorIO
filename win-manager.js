@@ -1,4 +1,4 @@
-let topZIndex = 10;
+let topZIndex = 0;
 
 function createWindow(title, appUrl, appLogo) {
   	const template = document.getElementById('window-template');
@@ -107,8 +107,9 @@ function createWindow(title, appUrl, appLogo) {
 	taskItem.appendChild(taskLogo);
 	taskbarApps.appendChild(taskItem);
 
-	taskItem.addEventListener('click', () => {focusWindow(win)});topZIndex++;
-    	win.style.zIndex = topZIndex;
+	taskItem.addEventListener('click', () => {focusWindow(win)});
+	topZIndex++;
+	win.style.zIndex = topZIndex;
 
   	closeBtn.addEventListener('click', () => {
   	  	win.remove();
@@ -116,3 +117,5 @@ function createWindow(title, appUrl, appLogo) {
   	});
 
 }
+
+createWindow('Calc', 'apps/calculator/index.html', 'apps/calculator/icons/logo.ico');

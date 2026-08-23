@@ -1,11 +1,9 @@
 let startPanelFrame = document.getElementById('start-panel-span');
 let startBtn = document.getElementById('start-btn');
 
-function setStartPanel() {
+startBtn.addEventListener('click', () => {
 	startPanelFrame.classList.toggle('vis');
-}
-
-startBtn.addEventListener('click', setStartPanel);
+});
 
 async function sendCommand(cmd) {
 	try {
@@ -23,8 +21,22 @@ async function sendSystemExec(exec) {
 		let securedCmd = encodeURIComponent(exec);
 
 		let result = await fetch(`http://127.0.0.1:2345/exec/${securedCmd}`);
-		return result;
+		return result.text();
 	} catch (error) {
 		console.log('Any error in sendSystemExec function')
 	}
 }
+
+async function pingStart() {
+	try {
+		if((await fetch('http://127.0.0.1:2345/ping')).text() === 'OK') {
+			console.log('Successfully conected to backend.sh');
+		}
+	} catch (error) {
+		alert(`Ping: ERROR. Please, start backend.sh as user (NOT ROOT!)\nerror: ${error}`);
+		console.error(`Ping: ERROR. Please, start backend.sh as user (NOT ROOT!)\nerror: ${error}`);
+		return error;
+	}
+}
+
+pingStart();

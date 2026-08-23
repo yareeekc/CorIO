@@ -1,0 +1,56 @@
+html, body {
+    font-family: Arial;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background-color: #444;
+    overflow: hidden;
+}
+
+body {
+    padding: 5px;
+}
+
+.top-bar {
+    width: calc(100vw - 15px);
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 2px;
+    border-radius: 6px;
+    display: flex;
+}
+
+#reload-btn {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+
+#reload-btn img {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    width: 36px;
+    height: 36px;
+}
+
+#url-area {
+    border: 1px solid #888;
+    border-radius: 6px;
+    background-color: #999;
+    height: 30px;
+    width: 100%;
+    font-size: 28px;
+}
+
+#frame {
+    width: 100%;
+    height: calc(100vh - 55px);
+    margin-top: 5px;
+    overflow: auto;
+}
