@@ -117,5 +117,3 @@ function createWindow(title, appUrl, appLogo) {
   	});
 
 }
-
-createWindow('Calc', 'apps/calculator/index.html', 'apps/calculator/icons/logo.ico');
