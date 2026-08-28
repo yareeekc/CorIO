@@ -1,46 +1,113 @@
-# Corio 0.1 Beta 🎉
+# CorIO 1.0.0 RELEASE!
 
-The following changes have been introduced in **BETA 0.1**:
+## Congratulations, everyone! We finally made it!
 
-### Basic User Utilities
+**RELEASE** is a fully ready-to-use build of our shell.
 
-* **File Manager** with a built-in text editor, image viewer, and video player
-* **Piped client** (YouTube)
-* **Calculator**
-* **Browser** — for proper operation, it is recommended to disable web security
+In this version, we have implemented application management, including **automated application installation and removal**, as well as added support for **`.zip` archives**.
 
-### Backend Changes
+## Installation
 
-The way `backend.sh` works has been changed:
+### 1. Clone the repository
 
-`fetch('http://localhost:2345/exec/', command);`
+Install the `git` package if you haven't already:
 
-This allows the `command` variable to be executed as a **sh command**.
+```bash
+git clone https://github.com/yareeekc/CorIO.git
+```
 
-<img width="1440" height="900" alt="Снимок экрана от 2026-08-23 18-33-46" src="https://github.com/user-attachments/assets/8bcbd634-681c-4cb1-b269-ab3d2ec10d72" />
+### 2. Run the installation script as root
 
-### What's Coming Next?
+```bash
+sudo ./install.sh
+```
 
-With the **1.0 Release**, we plan to introduce:
+**Note:** If you get a permissions error, make the script executable:
 
-* An **OS installer**
-* **DM** (Desktop Manager)
-* An **App Store**
-* An **Application Installer**
+```bash
+chmod +x ./install.sh
+```
 
-Thank you for staying with us! ❤️
+Then run the installation command again.
 
-**With love,
-Yareeeek**
+### 3. One last step!
 
+To launch CorIO, run:
 
-## License & Disclaimer
+```bash
+sudo corio
+```
 
-This project is licensed under the **BSD 3-Clause License** - see the [LICENSE](LICENSE) file for details.
+## Important Note
 
-### ⚠️ Disclaimer
-* **As Is:** This software is provided "as is", without warranty of any kind, express or implied.
-* **No Liability:** The author is not responsible for any damage, data loss, or security vulnerabilities caused by using this shell. 
-* **Use at Your Own Risk:** You are fully responsible for testing and deploying this software on your hardware.
+This version does **not** include a `systemd` service for automatically starting the shell when the system boots.
 
-Copyright Колтович Ярослав Алексеевич, from 2026
+We apologize for the inconvenience.
+
+## For Developers
+
+### Backend.sh
+
+To execute Bash commands from JavaScript, use the `fetch` method with the following endpoint:
+
+```text
+http://localhost:2345/exec/YOUR_COMMAND
+```
+
+To get the command output, use `fetch` and store the response in a variable. For example:
+
+```javascript
+let commandOutput = await fetch(
+    "http://127.0.0.1:2345/exec/" + encodeURIComponent(YOUR_COMMAND)
+).then(response => response.text());
+```
+
+The command output will then be stored in the `commandOutput` variable.
+
+### IOA — Application Archive
+
+A file with the `.ioa` extension is a **CorIO application installer**.
+
+It is simply a regular ZIP archive with a different file extension:
+
+```text
+template.zip → template.ioa
+```
+
+The following files and directories **must** be present in the root of the archive. Everything else is up to you:
+
+```text
+index.html
+ioai/
+    appName.ioai
+icons/
+    logo.ico
+```
+
+#### `index.html`
+
+The application itself.
+
+#### `ioai/appName.ioai`
+
+This file must contain exactly **one word**: the name of your application.
+
+**NO SPACES OR SPECIAL CHARACTERS!**
+
+This name will not be modified by the system to create a "prettier" display name for the user.
+
+#### `icons/logo.ico`
+
+The application's icon.
+
+The recommended size is **128×128 px**.
+
+You can also use the `icons` directory to store any additional icons required by your application.
+
+---
+
+Thank you for staying with us!
+
+**Yareeek, with love :3**
+
+**Translated with ChatGPT from Russian**
