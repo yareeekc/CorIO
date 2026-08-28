@@ -59,6 +59,7 @@ body, html {
     width: 42px;
     height: 42px;
     border-radius: 24px;
+    pointer-events: none;
 }
 
 #start-panel-span {
@@ -98,9 +99,12 @@ body, html {
     width: auto;
     height: calc(400px - 56px - 54px);
     display: flex;
+    flex-wrap: wrap;
     overflow: visible;
     padding-left: 16px;
     padding-right: 16px;
+    align-content: flex-start;
+    justify-content: flex-start;
 }
 
 #app-list button {
@@ -216,3 +220,26 @@ body, html {
 #working-apps-list {
     display: flex;
 }
+
+.context-menu {
+    background-color: #FFFFFF;
+    position: absolute;
+    display: none;
+    border: 1px solid #a6a6aa;
+    border-radius: 8px;
+    padding: 5px;
+    width: 300px;
+    height: auto;
+    z-index: 99998;
+}
+
+.menu-item {
+    padding: 2px 5px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.menu-item:hover { background-color: #a6a6aa; }
+
+.menu-item.delete:hover { background-color: #c27676; }

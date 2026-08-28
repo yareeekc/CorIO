@@ -4,7 +4,7 @@ const webFrame = document.getElementById('frame');
 let url = ''
 
 function loadPage(pageUrl) {
-    webFrame.src = `https://${pageUrl}`;
+    webFrame.src = `${pageUrl}`;
     urlArea.value = pageUrl;
 }
 

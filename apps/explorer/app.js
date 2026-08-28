@@ -183,6 +183,8 @@ async function renderFiles() {
         const textFiles = ['txt', 'json', 'md'];
         const binFiles = ['sh', 'exe', 'appImage', 'bin'];
         const videoFiles = ['mp4', 'webm', 'ogg', 'ogv']
+        const appFiles = ['ioa'];
+        const zipFiles = ['zip'];
 
         let extension = files[i].split('.').pop();
 
@@ -221,6 +223,26 @@ async function renderFiles() {
                 videoPlayerFile.textContent = files[i];
                 videoplayer.src = `${currentPath}/${files[i]}`;
                 videoplayer.load();
+            });
+        } else if (appFiles.includes(extension)) {
+            (async () => {
+                logo.src = 'icons/application.ico';
+                elem.addEventListener('click', async () => {
+                    await runCmd(`unzip ${currentPath}/${files[i]} -d apps/tmp/`)
+                    let newAppName = files[i].slice(0, -(extension.length + 1));
+                    await runCmd(`echo ,${newAppName} >> apps/apps.list`);
+                    await runCmd(`mkdir -p apps/${newAppName}/`);
+
+                    await runCmd(`mv apps/tmp/${newAppName} apps/`);
+                    renderFiles();
+                    alert(`App ${newAppName} installed successfully`);
+                });
+            })();
+        } else if (zipFiles.includes(extension)) {
+            logo.src = 'icons/zip.ico';
+            elem.addEventListener('click', async () => {
+                await runCmd(`unzip ${currentPath}/${files[i]} -d ${currentPath}/`);
+                renderFiles();
             });
         } else {
             logo.src = 'icons/file.ico';

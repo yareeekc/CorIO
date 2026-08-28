@@ -6,7 +6,6 @@
     <title>Corio Shell - Main File</title>
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
-    <script src="win-manager.js" defer></script>
     <link rel="icon" href="icons/corio.ico">
 </head>
 <body>
@@ -24,20 +23,7 @@
             <img src="icons/corio.ico" alt="Co">
             <span id="username">CorIO User</span>
         </span>
-        <span id="app-list">
-            <button class="circle-button" onclick="createWindow('Explorer', 'apps/explorer/index.html', 'apps/explorer/icons/logo.ico')">
-                <img src="apps/explorer/icons/logo.ico" alt="explorer">
-            </button>
-            <button class="circle-button" onclick="createWindow('Piped', 'apps/piped/index.html', 'apps/piped/logo.png')">
-                <img src="apps/piped/logo.png" alt="piped">
-            </button>
-            <button class="circle-button" onclick="createWindow('Calculator', 'apps/calculator/index.html', 'apps/calculator/icons/logo.ico')">
-                <img src="apps/calculator/icons/logo.ico" alt="calc">
-            </button>
-            <button class="circle-button" onclick="createWindow('Browc', 'apps/browc/index.html', 'apps/browc/icons/logo.ico')">
-                <img src="apps/browc/icons/logo.ico" alt="Browc">
-            </button>
-        </span>
+        <span id="app-list"></span>
         <span id="power-btns">
                 <button id="power-btn" class="circle-button" onclick="sendCommand('poweroff')">
                     <img src="icons/power.ico" alt="power">
@@ -50,22 +36,23 @@
                 </button>
         </span>
     </span>
-
-<template id="window-template">
-  <div class="window" style="left: 100px; top: 100px; width: 400px; height: 300px;">
-    <div class="window-header">
-        <span class="window-title">Приложение</span>
-        <div class="header-controls">
-            <button class="maximize-btn">🗖</button>
-            <button class="close-btn">X</button>
+    <template id="window-template">
+        <div class="window" style="left: 100px; top: 100px; width: 400px; height: 300px;">
+            <div class="window-header">
+                <span class="window-title">Приложение</span>
+                <div class="header-controls">
+                    <button class="maximize-btn">🗖</button>
+                    <button class="close-btn">X</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <iframe src="" frameborder="0" class="window-iframe"></iframe>
+            </div>
+            <div class="resizer"></div>
         </div>
+    </template>
+    <div class="context-menu" id="custom-context-menu">
+        <div class="menu-item delete" id="menu-delete"><span>Delete Application</span></div>
     </div>
-    <div class="window-content">
-        <iframe src="" frameborder="0" class="window-iframe"></iframe>
-    </div>
-    <div class="resizer"></div>
-  </div>
-</template>
-
 </body>
 </html>
