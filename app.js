@@ -196,7 +196,7 @@ function createWindow(title, appUrl, appLogo) {
 					}
 					let appsString = apps.join(',');
 					await sendSystemExec(`echo ${appsString} > apps/apps.list`);
-					await sendSystemExec(`rm -r apps/${app}/`);
+					await sendSystemExec(`rm -r apps/${app}`);
 				}
 			});
 		});
