@@ -9,7 +9,8 @@ echo "Installing CorIO Shell"
 apt update && apt install -y cage chromium ncat zip unzip
 mkdir -p /corio/
 cp -r ./* /corio/
-printf "cage -- chromium --kiosk --disable-web-security file:///corio/index.html &\n/corio/backend.sh\n" > /usr/bin/corio
+printf "/corio/backend.sh &\ncage -- chromium --kiosk --disable-web-security file:///corio/index.html\n" > /usr/bin/corio
+chmod +x /corio/backend.sh
 chmod +x /usr/bin/corio
 
 echo ""
