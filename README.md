@@ -35,7 +35,7 @@ Then run the installation command again.
 To launch CorIO, run:
 
 ```bash
-sudo corio
+corio
 ```
 
 ## Important Note
