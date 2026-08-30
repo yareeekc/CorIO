@@ -14,7 +14,7 @@ chmod +x /corio/backend.sh
 chmod +x /usr/bin/corio
 
 echo ""
-echo "CorIO Installed Successfully! Now You can Run \"sudo corio\"!"
+echo "CorIO Installed Successfully! Now You can Run \"corio\"!"
 echo "Visit https://github.com/yareeekc/CorIO/"
 echo "Thanks for Staying with Us!"
 echo "With Love, From Yareeekc."
