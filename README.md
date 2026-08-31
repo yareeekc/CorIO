@@ -1,10 +1,28 @@
-# CorIO 1.0.0 RELEASE!
+#CorIO 1.1.0 RELEASE
 
-## Congratulations, everyone! We finally made it!
+##What's new:
 
-**RELEASE** is a fully ready-to-use build of our shell.
+###Completely redesigned UI
 
-In this version, we have implemented application management, including **automated application installation and removal**, as well as added support for **`.zip` archives**.
+The design code has been completely rewritten.
+
+All interface elements are now visually integrated into the background while remaining easy to read. The elements blend seamlessly with the background and maintain their readability primarily through carefully designed shadows.
+
+###Fixed bugs in system scripts
+
+A critical bug in the installation script prevented backend.sh from reading files at all. This issue has been fixed in the new version.
+
+Cockpit application added
+
+Cockpit Project is a web-based server management interface for Linux servers. In CorIO, it replaces the traditional system settings panel.
+
+##What's next:
+
+The next version is planned to introduce personalization settings for the CorIO Shell.
+
+For now, we've reached the end of our current ideas. In the shortest possible time, we created a beautiful, lightweight shell that can run on almost any potato.
+
+If you have any feedback, ideas, or suggestions, feel free to contact us at <b>cameneye@inbox.ru</b>
 
 ## Installation
 
