@@ -12,7 +12,7 @@ touch /etc/cockpit/cockpit.conf
 mkdir -p /corio/
 cp -r ./* /corio/
 printf "/corio/backend.sh &\ncage -- chromium --kiosk --disable-web-security file:///corio/index.html\n" > /usr/bin/corio
-printf "[WebService]\nListenAddress = 127.0.0.1\n" > /etc/cockpit/cockpit.conf
+printf "[WebService]\nListenAddress = 127.0.0.1\nAllowUnencrypted = true\nAllowOrigins = *\nFrameAncestors = *\n" > /etc/cockpit/cockpit.conf
 chmod +x /corio/backend.sh
 chmod +x /usr/bin/corio
 
