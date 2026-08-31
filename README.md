@@ -75,9 +75,7 @@ http://localhost:2345/exec/YOUR_COMMAND
 To get the command output, use `fetch` and store the response in a variable. For example:
 
 ```javascript
-let commandOutput = await fetch(
-    "http://127.0.0.1:2345/exec/" + encodeURIComponent(YOUR_COMMAND)
-).then(response => response.text());
+let commandOutput = await fetch("http://127.0.0.1:2345/exec/" + encodeURIComponent(YOUR_COMMAND)).then(response => response.text());
 ```
 
 The command output will then be stored in the `commandOutput` variable.
