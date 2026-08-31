@@ -166,6 +166,8 @@ function createWindow(title, appUrl, appLogo) {
 }
 
 (async () => {
+	document.getElementById('username').textContent = `${await sendSystemExec('whoami')}@${await sendSystemExec('hostname')}`;
+
 	let appsLet = await sendSystemExec('cat apps/apps.list');
 	let apps = appsLet.split(',');
 
@@ -178,6 +180,7 @@ function createWindow(title, appUrl, appLogo) {
 
 		btn.addEventListener('click', () => {
 			createWindow(app, `apps/${app}/index.html`, `apps/${app}/icons/logo.ico`);
+			startPanelFrame.classList.remove('vis');
 		});
 
 		btn.addEventListener('contextmenu', (e) => {
@@ -211,6 +214,4 @@ function createWindow(title, appUrl, appLogo) {
 		btn.appendChild(btnLogo);
 		document.getElementById('app-list').appendChild(btn);
 	});
-
-	startPanelFrame.classList.remove('vis');
 })();

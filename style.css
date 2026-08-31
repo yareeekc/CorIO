@@ -1,20 +1,24 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: translateY(10px);
     }
     to {
         display: block;
         opacity: 1;
+        transform: translateY(0px);
     }
 }
 
 @keyframes fadeOut {
     from {
         opacity: 1;
+        transform: translateY(0px);
     }
     to {
         opacity: 0;
         display: none;
+        transform: translateY(10px);
     }
 }
 
@@ -72,6 +76,7 @@ body, html {
     bottom: 51px;
     background-color: #FFFFFF;
     animation: fadeOut 0.15s forwards;
+    box-shadow: 0 16px 16px rgba(0, 0, 0, 0.6);
 }
 
 #start-panel-span.vis {
@@ -117,7 +122,7 @@ body, html {
 #app-list button img {
     width: 50px;
     height: 50px;
-    border-radius: 25pz;
+    border-radius: 25px;
 }
 
 #power-btns {
@@ -127,7 +132,6 @@ body, html {
     bottom: 0px;
     left: 3px;
 }
-
 
 #desktop {
   position: absolute;
@@ -148,7 +152,7 @@ body, html {
   border: 1px solid #444;
   border-radius: 6px 6px 2px 2px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  box-shadow: 16px 16px 16px rgba(0, 0, 0, 0.6);
 }
 
 .window-header {
@@ -231,6 +235,7 @@ body, html {
     width: 300px;
     height: auto;
     z-index: 99998;
+    box-shadow: 0 16px 16px rgba(0, 0, 0, 0.6);
 }
 
 .menu-item {
