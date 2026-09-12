@@ -27,6 +27,6 @@ if [ "$1" == "--run-request" ]; then
     exit 0
 fi
 
-echo 'Corio OS Kernel HTTP Server Started on Port 2345'
+echo 'Corio Shell HTTP Server Started on Port 2345'
 
 ncat -l 127.0.0.1 -k 2345 -c "$0 --run-request"
