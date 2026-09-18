@@ -168,7 +168,7 @@ function createWindow(title, appUrl, appLogo) {
 (async () => {
 	document.getElementById('username').textContent = `${await sendSystemExec('whoami')}@${await sendSystemExec('hostname')}`;
 
-	let appsLet = await sendSystemExec('cat apps/apps.list');
+	let appsLet = await sendSystemExec('cat /corio/apps/apps.list');
 	let apps = appsLet.split(',');
 
 	const customContextMenu = document.getElementById('custom-context-menu');
