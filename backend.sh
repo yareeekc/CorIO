@@ -29,4 +29,4 @@ fi
 
 echo 'Corio Shell HTTP Server Started on Port 2345'
 
-ncat -l -k -s 127.0.0.1 2345 -c "$0 --run-request"
+ncat -l -k 127.0.0.1 2345 -c "$0 --run-request"
